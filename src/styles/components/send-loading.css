@@ -1,0 +1,115 @@
+/**
+ * send-loading.css
+ * POCK 전송 로딩 · 전송완료 전체 화면
+ */
+
+.send-loading {
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--z-index-modal) + 10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 1.25rem;
+  background-color: var(--color-base-100);
+  background-image: url("/assets/images/background/bg-mo.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.send-loading__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 20rem; /* 320 — 임시값 */
+}
+
+.send-loading__logo {
+  display: block;
+  object-fit: contain;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  /* 포크가 오른쪽에 있어 주머니 기준 중앙 맞춤 · 자기 폭 % */
+  transform: translateX(15%); /* 임시값 */
+}
+
+.send-loading__logo--loading {
+  width: 6.25rem; /* 100 — Mo */
+  height: 7.125rem; /* 114 */
+}
+
+.send-loading__logo--complete {
+  width: 7.125rem; /* 114 — Mo */
+  height: 6.25rem; /* 100 */
+}
+
+.send-loading__text {
+  margin: 1.25rem 0 0; /* 20 — 임시값 */
+  color: var(--color-base-900);
+  font-family: var(--font-family-base);
+  font-size: 1.25rem; /* 20 — Mo */
+  font-weight: var(--font-weight-regular);
+  line-height: 1.3;
+  text-align: center;
+}
+
+/* 로딩 바 — loading-bar1→2→3 순차 교체 · Mo 154×16 */
+.send-loading__bar-image {
+  display: block;
+  box-sizing: border-box;
+  width: 9.625rem; /* 154 */
+  height: 1rem; /* 16 */
+  margin-top: 1.25rem; /* 20 — 임시값 */
+  object-fit: fill;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.send-loading__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem; /* 10 */
+  margin-top: 1.25rem; /* 20 — 임시값 */
+}
+
+.send-loading__action.btn--action-text {
+  font-size: 0.875rem; /* 14 */
+  line-height: var(--line-height-tight);
+}
+
+@media (min-width: 769px) {
+  .send-loading {
+    background-image: url("/assets/images/background/bg-pad.png");
+    padding: 2.5rem;
+  }
+
+  .send-loading__logo--loading {
+    width: 12.5rem; /* 200 — 원본 */
+    height: 14.375rem; /* 230 — 원본 */
+  }
+
+  .send-loading__logo--complete {
+    width: 11.625rem; /* 186 — 원본 */
+    height: 9.75rem; /* 156 — 원본 */
+  }
+
+  .send-loading__text {
+    margin-top: 1.5rem; /* 24 — 임시값 */
+    font-size: 1.5rem; /* 24 — Pad */
+  }
+
+  .send-loading__bar-image {
+    width: 15.625rem; /* 250 — 원본 비율 유지 · 임시값 */
+    height: 1.625rem; /* 26 */
+    margin-top: 1.5rem;
+  }
+
+  .send-loading__actions {
+    margin-top: 1.5rem; /* 24 — 임시값 */
+  }
+}

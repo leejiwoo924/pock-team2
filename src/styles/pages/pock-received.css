@@ -1,0 +1,329 @@
+﻿/**
+ * 보관함 · 전송함 공통 레이아웃
+ * Mo: 상단 가로 탭 · 카테고리 / 파란 보드
+ * Tb·Pc(1024+): 좌우 64 · 파란 보드(상 20·좌우 42) · 우측 세로 탭 · 보드 안 카테고리
+ */
+
+.page--pock-received,
+.page--pock-sent {
+  height: 100vh;
+  height: 100dvh;
+  max-height: 100vh;
+  max-height: 100dvh;
+  overflow-x: visible; /* 우측 잠김/열림 탭이 main 밖으로 나와도 보이도록 */
+  overflow-y: hidden;
+  background-color: var(--color-base-0);
+  background-image:
+    linear-gradient(rgb(255 255 255 / 30%), rgb(255 255 255 / 30%)),
+    url("/assets/images/background/grid-bg.webp");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.page--pock-received .page__wrapper,
+.page--pock-sent .page__wrapper,
+.page--pock-received.page--has-navigation .page__wrapper,
+.page--pock-sent.page--has-navigation .page__wrapper {
+  flex: 1;
+  min-height: 0;
+  overflow-x: visible;
+  overflow-y: hidden;
+  padding-bottom: 0;
+}
+
+.page--pock-received .main,
+.page--pock-sent .main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  box-sizing: border-box;
+  width: 100%;
+  /* 724 — home__profile(250) + column-gap(24) + home__friends(450) */
+  max-width: 45.25rem;
+  min-height: 0;
+  margin-inline: auto;
+  overflow: hidden;
+  padding: 2.5rem 1.25rem 0; /* 상단 40 · 좌우 20 */
+}
+
+.pock-mailbox {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.pock-mailbox__toolbar {
+  display: flex;
+  flex-shrink: 0;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.pock-mailbox__stage {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.pock-mailbox__tabs {
+  flex: 0 0 auto;
+  position: relative;
+  width: max-content;
+  margin-left: 0.625rem; /* 10 */
+}
+
+.pock-mailbox__tabs .pock-send-tabs__button {
+  flex: 0 0 auto;
+}
+
+.pock-mailbox__category {
+  position: relative;
+  flex: 0 0 auto;
+  margin-bottom: 0.1875rem; /* 배경과 3px */
+}
+
+.pock-mailbox__board {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  box-sizing: border-box;
+  padding: 0.625rem; /* 10 — Mo */
+  padding-bottom: calc(
+    0.625rem + var(--navigation-bar-height, 4.5rem) + 2.25rem +
+      env(safe-area-inset-bottom)
+  );
+  overflow-x: hidden;
+  overflow-y: auto;
+  border: 1px solid var(--color-base-700);
+  border-radius: 0.3125rem; /* 5 */
+  background-color: var(--color-brand-light); /* brand/cyworld/light */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.pock-mailbox__board::-webkit-scrollbar {
+  display: none;
+}
+
+.pock-mailbox__meta {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin: 0 0 0.5rem; /* 카드와 8 */
+}
+
+.pock-mailbox__meta-lead {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.5rem; /* 8 */
+  min-width: 0;
+}
+
+.pock-mailbox__count {
+  margin: 0;
+  color: var(--color-base-900);
+  font-size: 0.875rem; /* 임시값 — 시안 미기재 */
+  line-height: var(--line-height-tight);
+}
+
+.pock-mailbox__refresh {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 1.125rem; /* Mo 18 */
+  height: 1.125rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.pock-mailbox__refresh:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.pock-mailbox__refresh-icon {
+  display: block;
+  width: 1.125rem; /* Mo 18 */
+  height: 1.125rem;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.pock-mailbox__cards {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 0.75rem; /* 12 */
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0.625rem; /* 10 */
+  list-style: none;
+  border: 1px solid var(--color-base-700);
+  border-radius: 0.3125rem; /* 5 */
+  background-color: var(--color-base-0);
+}
+
+.pock-mailbox__panel {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.pock-mailbox__item {
+  min-width: 0;
+  overflow: visible;
+}
+
+.pock-mailbox__cards .letter-card {
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+}
+
+@media (min-width: 769px) {
+  .page--pock-received .main,
+  .page--pock-sent .main {
+    width: min(100%, 45.25rem); /* 724 — 홈 프로필+갭+친구목록 */
+    max-width: 45.25rem;
+    margin-inline: auto;
+    padding: 2.5rem 0 0; /* 상단 40 · 좌우 0 — 724가 보드 폭 */
+    /* 탭이 보드 오른쪽 밖으로 나오도록 */
+    overflow: visible;
+  }
+
+  .page--pock-sent .main {
+    width: 100%;
+    max-width: none;
+    margin-inline: 0; /* 회색 배경 마진 없음 · 좌우 패딩 64만 */
+    padding-inline: 4rem; /* 64 */
+  }
+
+  .page--pock-received .page__wrapper,
+  .page--pock-sent .page__wrapper,
+  .page--pock-received.page--has-navigation .page__wrapper,
+  .page--pock-sent.page--has-navigation .page__wrapper {
+    overflow-x: visible;
+    overflow-y: hidden;
+  }
+
+  .pock-mailbox {
+    overflow: visible;
+  }
+
+  .pock-mailbox__stage {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+    overflow: visible;
+  }
+
+  /*
+   * 파란 보드: 위·아래 20 · 좌우 42 — 흰 카드 기준 대칭
+   * 탭은 stage에 두어 폭 계산에서 제외 (카드 오른쪽에 absolute)
+   */
+  .pock-mailbox__board {
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 1.25rem 2.625rem; /* 위·아래 20 · 좌우 42 동일 */
+    padding-bottom: calc(
+      1.25rem + var(--navigation-bar-height, 4.125rem) + 2.25rem +
+        env(safe-area-inset-bottom)
+    );
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-radius: 0.625rem; /* 10 */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .pock-mailbox__board::-webkit-scrollbar {
+    display: none;
+  }
+
+  .pock-mailbox__meta {
+    box-sizing: border-box;
+    align-items: flex-end; /* 총 n개 · 새로고침 하단 정렬 */
+    height: 2.5rem; /* 40 */
+    margin: 0 0 0.625rem; /* 아래 영역과 10 */
+    padding: 0;
+  }
+
+  .pock-mailbox__category {
+    margin-bottom: 0;
+  }
+
+  .pock-mailbox__refresh {
+    width: 1.5rem; /* 24 */
+    height: 1.5rem;
+  }
+
+  .pock-mailbox__refresh-icon {
+    width: 1.5rem; /* 24 */
+    height: 1.5rem;
+  }
+
+  /* 하얀 박스 — 편지 높이만큼 · 길면 보드가 스크롤 */
+  .pock-mailbox__panel {
+    position: relative;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    min-width: 0;
+    margin: 0;
+  }
+
+  .pock-mailbox__cards {
+    flex: 0 0 auto;
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    margin: 0;
+    padding: 0.625rem; /* 위·아래·좌우 10 동일 */
+    overflow: visible;
+    border-radius: 0.625rem; /* 10 */
+  }
+
+  /* 전송함 Tb — 잠김 흰 박스 2겹 · 열림 1겹 · 각 패딩 16 */
+  .page--pock-sent .pock-mailbox__cards {
+    padding: 1rem; /* 16 */
+  }
+
+  .page--pock-sent .pock-mailbox--locked .pock-mailbox__panel {
+    box-sizing: border-box;
+    padding: 1rem; /* 16 */
+    border: 1px solid var(--color-base-700);
+    border-radius: 0.625rem; /* 10 */
+    background-color: var(--color-base-0);
+  }
+
+  /* 흰 카드(보드 우측 패딩 42 안쪽) 오른쪽에 탭 밀착 */
+  .pock-mailbox__tabs {
+    position: absolute;
+    top: calc(1.25rem + 2.5rem + 0.625rem + 2.5rem); /* 보드20+메타40+간격10+40 */
+    left: calc(100% - 2.625rem); /* 42 — cards 오른쪽 끝 */
+    z-index: 5;
+    width: max-content;
+    margin: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pock-mailbox__board {
+    scroll-behavior: auto;
+  }
+}

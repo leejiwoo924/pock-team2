@@ -1,0 +1,514 @@
+/**
+ * mypage.css
+ * Page: .page--mypage — 프로필 수정
+ * Mo·Tb 동일 레이아웃 (탭으로 성별·옷·배경 분리)
+ */
+
+.page--mypage {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: var(--color-base-100);
+  background-image: url("/assets/images/background/bg-pad.webp");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.page--mypage .page__wrapper {
+  max-width: 100%;
+}
+
+.page--mypage .main {
+  padding-inline: 1.25rem; /* 20 */
+}
+
+.mypage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 33.75rem; /* 540 */
+  margin-inline: auto;
+  padding-inline: 0;
+  padding-bottom: 0;
+}
+
+/* 헤더: 뒤로 24 · 위 Mo20 / Tb26 / Pc40 · 제목 16 중앙 */
+.mypage__header {
+  position: relative;
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 2.5rem; /* 40 */
+  min-height: 1.5rem; /* 24 */
+}
+
+.mypage__back {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.mypage__back-icon {
+  display: block;
+  width: 1.5rem; /* 24 */
+  height: 1.5rem;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.mypage__title {
+  margin: 0;
+  color: var(--color-base-900);
+  font-size: 1.375rem; /* 22 */
+  font-weight: inherit;
+  line-height: var(--line-height-tight);
+  text-align: center;
+}
+
+.mypage-window {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 33.75rem; /* 540 */
+  margin-top: 1rem; /* 16 — 임시값 */
+  overflow: hidden;
+  border: 0.5px solid var(--color-base-700);
+  border-radius: 0.625rem; /* 10 */
+  background-color: var(--color-base-0);
+}
+
+.mypage-window .pock-window__bar {
+  flex: 0 0 auto;
+  width: 100%;
+  height: 2.5rem; /* 40 */
+  border-color: var(--color-base-700);
+  border-bottom: 0.5px solid var(--color-base-700);
+  border-radius: 0.625rem 0.625rem 0 0;
+}
+
+.mypage-window .pock-window__title {
+  font-size: 1rem; /* 16 */
+}
+
+.mypage-window__body {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 0;
+  padding: 0;
+  background-color: var(--color-base-0);
+}
+
+/* 미리보기 + 닉네임 · 위 20 · 아래 70 (탭 밑선과 맞춤) */
+.mypage-profile {
+  position: relative;
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 1.25rem 0 4.375rem; /* 위 20 · 아래 70 */
+  background-color: var(--color-base-0);
+}
+
+.mypage-profile__avatar {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 12.5rem; /* 200 */
+  height: 13.125rem; /* 210 */
+  overflow: hidden;
+  border-radius: 1.25rem; /* 20 */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.mypage-profile__figure {
+  position: relative;
+  flex: 0 0 auto;
+  width: auto;
+  height: 10rem; /* 160 */
+}
+
+.mypage-profile__body {
+  display: block;
+  width: auto;
+  height: 10rem; /* 160 */
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.mypage-profile__clothes {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  image-rendering: pixelated;
+  pointer-events: none;
+}
+
+/* 닉네임 + 코인 · 아바타 아래 12 · 가로 gap 8 · 폭=아바타 200 */
+.mypage-profile__nickname {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem; /* 8 */
+  box-sizing: border-box;
+  width: 12.5rem; /* 200 — 아바타와 동일 */
+  margin-top: 0.75rem; /* 12 */
+}
+
+.mypage-profile__nickname-input {
+  flex: 1 1 auto;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  height: 1.875rem; /* 30 */
+  margin: 0;
+  padding: 0 0.5rem; /* 8 */
+  border: 0.5px solid var(--color-base-700);
+  border-radius: 0;
+  background-color: var(--color-base-0);
+  color: var(--color-base-900);
+  font: inherit;
+  font-size: 1rem; /* 16 */
+  line-height: var(--line-height-tight);
+}
+
+.mypage-profile__nickname-input:focus {
+  outline: 1px solid var(--color-rainbow-blue-base);
+  outline-offset: 0;
+}
+
+.mypage-profile__cost {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.25rem; /* 4 */
+  color: var(--color-base-900);
+  font-size: 0.875rem; /* 14 */
+  line-height: var(--line-height-tight);
+}
+
+.mypage-profile__cost-icon {
+  display: block;
+  flex: 0 0 auto;
+  width: 0.875rem; /* 14 */
+  height: 0.875rem;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.mypage-profile__cost-value {
+  white-space: nowrap;
+}
+
+/* 탭 — 프로필 영역 하단과 밑선 맞춤 · 왼쪽 15 */
+.mypage-tabs {
+  position: absolute;
+  left: 0.9375rem; /* 15 */
+  bottom: 0;
+  display: flex;
+  flex: 0 0 auto;
+  align-items: stretch;
+  gap: 0.5rem; /* 8 */
+  margin: 0;
+  padding: 0;
+}
+
+.mypage-tabs__button {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0 1.125rem; /* 좌우 18 */
+  border: 1px solid var(--color-base-600);
+  border-bottom: 0;
+  border-radius: 0.625rem 0.625rem 0 0; /* 위만 10 */
+  background-color: var(--color-base-100);
+  cursor: pointer;
+}
+
+.mypage-tabs__button--active {
+  background-color: var(--color-rainbow-yellow-light);
+}
+
+.mypage-tabs__icon {
+  display: block;
+  width: 2.375rem; /* 38 */
+  height: 2.375rem;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+/* 선택 영역 — base/100 · 좌우 70 · 상하 40 · 높이 238 고정 */
+.mypage-window__panel {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: stretch;
+  box-sizing: border-box;
+  width: 100%;
+  height: 14.875rem; /* 238 */
+  margin: 0;
+  padding: 2.5rem 4.375rem; /* 상하 40 · 좌우 70 */
+  border: 0;
+  border-top: 0.5px solid var(--color-base-700);
+  border-bottom: 0.5px solid var(--color-base-700);
+  overflow: hidden;
+  background-color: var(--color-base-100);
+}
+
+.mypage-window__panel > * {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+/* 성별 — 패널 안쪽에 맞춤 · 캐릭터 높이 110 */
+.mypage-gender {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+
+.mypage-gender__row {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: stretch;
+  justify-content: stretch;
+  gap: 0.625rem; /* 10 */
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+
+.mypage-gender__item {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+}
+
+.mypage-gender .selection-box {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  aspect-ratio: auto;
+}
+
+.mypage-gender .selection-box__media {
+  overflow: visible;
+}
+
+.mypage-gender .selection-box__media img,
+.mypage-gender__img {
+  width: auto;
+  height: 6.875rem; /* 110 */
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+/* 옷 — 패널 안쪽 · gap 10 · 이미지 가로 60 · 정중앙 */
+.mypage-clothes {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+
+.mypage-clothes__row {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: stretch;
+  justify-content: stretch;
+  gap: 0.625rem; /* 10 */
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+
+.mypage-clothes__item {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+}
+
+.mypage-clothes .selection-box {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  aspect-ratio: auto;
+}
+
+.mypage-clothes .selection-box__media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  overflow: hidden;
+}
+
+.mypage-clothes .selection-box__media img,
+.mypage-clothes__img {
+  display: block;
+  /* 최소 60 · 화면·칸 너비에 따라 커짐 (칸의 ~72%) */
+  width: clamp(3.75rem, 72%, 6.25rem); /* 60 ~ 100 */
+  max-width: 90%;
+  height: auto;
+  max-height: 90%;
+  object-fit: contain;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* 배경 — 가로 gap 10 · 세로 gap 16 · 3×2 · 패널 안쪽(158)에 맞춤 */
+.mypage-bg {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+
+.mypage-bg__row {
+  display: grid;
+  flex: 1 1 auto;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  column-gap: 0.625rem; /* 10 */
+  row-gap: 1rem; /* 16 */
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+
+.mypage-bg__item {
+  min-width: 0;
+  min-height: 0;
+}
+
+.mypage-bg .selection-box {
+  --selection-box-stroke: 2px;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  aspect-ratio: auto;
+  border: 0;
+  border-radius: 0.625rem; /* 10 */
+  overflow: visible;
+}
+
+.mypage-bg .selection-box--selected {
+  border: 0;
+  background-color: transparent;
+  box-shadow: 0 0 0 2px var(--color-navigation-blue);
+}
+
+.mypage-bg .selection-box--selected .selection-box__media,
+.mypage-bg .selection-box--selected .mypage-bg__swatch {
+  border-radius: 0.625rem;
+}
+
+.mypage-bg .selection-box__media {
+  flex: 1 1 auto;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 0.625rem;
+}
+
+.mypage-bg__swatch {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.625rem;
+  background-size: cover;
+  background-position: center;
+}
+
+.mypage-save {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-base-0);
+}
+
+.mypage-save__btn.btn--push {
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+  height: 2.75rem; /* 44 */
+  min-height: 2.75rem;
+  border: 0;
+  border-radius: 0 0 0.625rem 0.625rem;
+}
+
+@media (min-width: 769px) {
+  .page--mypage .main {
+    padding-inline: 1.25rem;
+  }
+
+  .mypage {
+    max-width: 40.0625rem; /* 641 */
+  }
+
+  .mypage__header {
+    margin-top: 1.625rem; /* 26 — Tb */
+  }
+
+  .mypage-window {
+    width: 40.0625rem;
+    max-width: 40.0625rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mypage-tabs__button {
+    transition: none;
+  }
+}

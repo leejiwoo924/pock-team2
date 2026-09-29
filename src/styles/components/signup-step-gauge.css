@@ -1,0 +1,52 @@
+/**
+ * signup-step-gauge.css
+ * 로그인 · 캐릭터 설정 단계 게이지
+ * mo gap 22px / tb·pc gap 30px
+ */
+
+.signup-step-gauge {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.signup-step-gauge__item {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.signup-step-gauge__image {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+}
+
+/* Mobile — gap 8px, 이미지 72×20 고정 */
+.signup-step-gauge--mo {
+  gap: 0.5rem; /* 8px */
+}
+
+.signup-step-gauge--mo .signup-step-gauge__image,
+.signup-step-gauge--mo .signup-step-gauge__image--active {
+  width: 4.5rem; /* 72 */
+  height: 1.25rem; /* 20 */
+  max-width: none;
+  flex-shrink: 0;
+}
+
+/* Tablet / PC — gap 30px */
+.signup-step-gauge--tb,
+.signup-step-gauge--pc {
+  gap: 1rem; /* 16px */
+}
+
+.signup-step-gauge--tb .signup-step-gauge__image,
+.signup-step-gauge--pc .signup-step-gauge__image {
+  width: 8.25rem; /* 132 */
+  height: 1.75rem; /* 28 */
+}

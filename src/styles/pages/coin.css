@@ -1,0 +1,373 @@
+/**
+ * coin.css — page
+ * Page: .page--coin
+ * 반응형: Mo 좌우 20 · 폭 유동 · Tb/Pc min-width 769px 시안 670
+ */
+
+.page--coin {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: var(--color-base-100);
+  background-image: url("/assets/images/background/bg-pad.webp");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.page--coin .page__wrapper {
+  max-width: 100%;
+}
+
+/* 좌우 패딩 20 · 폭은 뷰포트에 맞춰 계속 확장 */
+.page--coin .main {
+  width: 100%;
+  max-width: none;
+  padding-inline: 1.25rem; /* 20 */
+}
+
+.coin-page {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; /* 흰 상점 창·광고 가로 동일하게 늘어남 */
+  gap: 0;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none;
+  margin-inline: auto;
+}
+
+/* 상단: 뒤로가기 왼쪽 · 보유코인+plus = 광고 버튼 오른쪽 끝 */
+.coin-page__top {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 100%;
+  margin-top: 4rem; /* 64 — 설정과 동일 · 임시값 */
+  padding-inline: 0;
+}
+
+.coin-page__back {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0.25rem;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.coin-page__back-icon {
+  display: block;
+  width: 1.5rem; /* 24 */
+  height: 1.5rem; /* 24 — Mo~Pc 동일 */
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.coin-page__coin-row {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.125rem; /* 2 — 설정과 동일 */
+}
+
+/* Action_btn Icon · 패딩 상하 4 · 좌우 10 · 아이콘↔텍스트 8 */
+.coin-page__coin-btn.btn--action-icon {
+  gap: 0.5rem; /* 8 */
+  width: auto;
+  min-height: 0;
+  padding: 0.25rem 0.625rem; /* 4 10 */
+  border-radius: 0.5rem; /* 8 */
+}
+
+.coin-page__coin-icon {
+  display: block;
+  flex: 0 0 auto;
+  width: 1.125rem; /* 18 */
+  height: 1.125rem;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.coin-page__coin-value {
+  color: var(--color-base-800);
+  font-size: 0.875rem; /* 14 — 임시값 */
+  line-height: var(--line-height-tight);
+}
+
+.coin-page__coin-plus {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.coin-page__coin-plus-icon {
+  display: block;
+  width: 1.5rem; /* 24 */
+  height: 1.5rem;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+/* Push btn 주황 — 광고보고 코인받기 · 폭 100% */
+.coin-page__ad {
+  display: flex;
+  flex: 0 0 auto;
+  justify-content: center;
+  width: 100%;
+  max-width: 100%;
+  margin-top: 1.25rem; /* 20 — 임시값 · 상단↔광고 */
+  padding-inline: 0;
+}
+
+.coin-page__ad-btn.btn--push {
+  gap: 0.625rem; /* 10 — 아이콘↔텍스트 */
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  max-width: none; /* Push 기본 460 해제 · 유동 */
+  height: 3.9375rem; /* 63 */
+  min-height: 3.9375rem; /* 63 — Push 기본 40 덮음 */
+  font-size: 1rem; /* 16 */
+}
+
+.coin-page__ad-icon {
+  display: block;
+  flex: 0 0 auto;
+  width: 1.4375rem; /* 23 */
+  height: 1.454375rem; /* 23.27 */
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+/* COIN SHOP — 흰 창 가로 100% · header_txt 40 · 광고↔창 20 */
+.coin-shop {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-self: stretch;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none;
+  margin-top: 1.25rem; /* 20 — 광고↔COIN SHOP */
+  overflow: hidden;
+  border: 0.5px solid var(--color-base-700);
+  border-radius: 0.625rem 0.625rem 0 0; /* 위만 10 · 회색바 밑단 모서리 없음 */
+  background-color: var(--color-base-0);
+}
+
+.coin-shop .pock-window__bar {
+  flex: 0 0 auto;
+  width: 100%;
+  height: 2.5rem; /* 40 — window header_txt */
+  border-color: var(--color-base-700);
+  border-bottom: 0.5px solid var(--color-base-700);
+  border-radius: 0.625rem 0.625rem 0 0;
+}
+
+.coin-shop .pock-window__title {
+  font-size: 1rem; /* 16 */
+}
+
+/* 흰 안내 바 · 패딩 상하 5 · 좌우 15 · 하단 stroke base/700 0.5 */
+.coin-shop__lead {
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: 0.3125rem 0.9375rem; /* 5 15 — 상하/좌우 */
+  border-bottom: 0.5px solid var(--color-base-700);
+  background-color: var(--color-base-0);
+  color: var(--color-base-900);
+  font-size: 0.75rem; /* 12 */
+  line-height: var(--line-height-tight);
+}
+
+/* 회색 본문 · 패딩 상하 20 · 좌우 22 */
+.coin-shop__body {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 1.25rem 1.375rem; /* 20 22 */
+  background-color: var(--color-base-200); /* #f2f2f2 — 시안 회색 */
+}
+
+/* 2열 · 흰 카드 가로 유동 · gap 14 */
+.coin-shop__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.875rem; /* 14 */
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.coin-shop__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  min-height: 12.875rem; /* 206 — 기본 · 큰 아이콘 시 늘어남 */
+  height: auto;
+  margin: 0;
+  padding: 1.25rem 0.5rem; /* 상하 20 · 좌우 임시값 */
+  overflow: hidden;
+  border-radius: 0.816875rem; /* 13.07 */
+  background-color: var(--color-base-0);
+  border: 1px solid var(--color-base-200); /* stroke 미확정 */
+}
+
+.coin-shop__icon {
+  display: block;
+  flex: 0 0 auto;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.coin-shop__label {
+  flex: 0 0 auto;
+  margin: 0;
+  margin-top: 0.9375rem; /* 15 — 아이콘↔문구 */
+  color: var(--color-base-900);
+  font-size: 1.25rem; /* 20 */
+  line-height: var(--line-height-tight);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.coin-shop__price {
+  flex: 0 0 auto;
+  margin: 0;
+  margin-top: 0.3125rem; /* 5 — 문구↔가격 */
+  color: var(--color-base-900);
+  font-size: 1rem; /* 16 */
+  line-height: var(--line-height-tight);
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Action_btn Text · 패딩 상하 4 · 좌우 10 · 폰트 14 · #353535 */
+.coin-shop__buy.btn--action-text {
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  min-height: 0;
+  margin-top: 0.625rem; /* 10 — 가격↔버튼 */
+  padding: 0.25rem 0.625rem; /* 4 10 */
+  color: #353535;
+  font-size: 0.875rem; /* 14 */
+}
+
+/* Tb/Pc — 광고·창 시안 670 · 카드 306.5 */
+@media (min-width: 769px) {
+  .page--coin .main {
+    width: 100%;
+    max-width: none;
+    padding-inline: 1.25rem; /* 20 */
+  }
+
+  .coin-page {
+    align-items: center;
+    max-width: 41.875rem; /* 670 */
+  }
+
+  .coin-page__top,
+  .coin-page__ad {
+    max-width: 41.875rem; /* 670 */
+  }
+
+  .coin-page__ad-btn.btn--push {
+    width: 41.875rem; /* 670 */
+    min-width: 41.875rem;
+    max-width: 41.875rem;
+    height: 3.9375rem; /* 63 */
+    min-height: 3.9375rem;
+  }
+
+  .coin-shop {
+    align-self: center;
+    width: 41.875rem; /* 670 */
+    max-width: 41.875rem;
+  }
+
+  .coin-shop__grid {
+    grid-template-columns: repeat(2, 19.15625rem); /* 306.5 */
+  }
+
+  .coin-shop__card {
+    width: 19.15625rem; /* 306.5 */
+  }
+
+  /* 네비 아이콘 50 기준 토스트 위치 */
+  .coin-toast {
+    bottom: calc(
+      env(safe-area-inset-bottom, 0px) + var(--navigation-list-padding-bottom, 1.25rem) + var(--navigation-label-size, 1rem) * 1.25 + 0.125rem +
+        3.125rem + 1.0625rem
+    );
+  }
+}
+
+/* 구매 성공 토스트 — 436×51 · 모서리 10 · rainbow/blue/base */
+.coin-toast {
+  position: fixed;
+  left: 50%;
+  /* 네비: 하단패딩 + 라벨(글자크기×1.25) + gap2 + 아이콘 + 간격17 */
+  bottom: calc(
+    env(safe-area-inset-bottom, 0px) + var(--navigation-list-padding-bottom, 1.25rem) + var(--navigation-label-size, 1rem) * 1.25 + 0.125rem +
+      var(--navigation-icon-size, 3.375rem) + 1.0625rem
+  );
+  z-index: var(--z-index-toast);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem; /* 10 — 아이콘↔텍스트 */
+  box-sizing: border-box;
+  width: 27.25rem; /* 436 */
+  max-width: calc(100% - 2.5rem);
+  height: 3.1875rem; /* 51 */
+  padding: 0 1.25rem; /* 좌우 임시값 */
+  border-radius: 0.625rem; /* 10 */
+  background-color: var(--color-rainbow-blue-base); /* #058aff */
+  box-shadow: inset 0 0.25rem 0.3125rem 0 rgba(255, 255, 255, 0.25); /* #fff 25% · Y4 blur5 */
+  color: var(--color-base-0);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.coin-toast__icon {
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  width: 1rem; /* 16 */
+  height: 1rem; /* 16 */
+  border: 1.5px solid var(--color-base-0);
+  border-radius: var(--radius-full);
+  background-color: var(--color-base-0);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath fill='%23058AFF' d='M4.5 8.5L2 6l.7-.7 1.8 1.8L9.3 2.3l.7.7z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 0.625rem 0.625rem;
+}
+
+.coin-toast__text {
+  margin: 0;
+  font-size: 0.875rem; /* 14 — 임시값 */
+  line-height: var(--line-height-tight);
+  white-space: nowrap;
+}

@@ -1,0 +1,245 @@
+/**
+ * outfit-setup.css
+ * Page: .page--outfit-setup — 프로필 옷 선택
+ */
+
+.page--outfit-setup {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: #edf7fd;
+  background-image: var(--gradient-profile-setup);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.page--outfit-setup .page__wrapper {
+  width: 100%;
+  max-width: none;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.page--outfit-setup .main {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 0;
+}
+
+.outfit-setup {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  font-family: var(--font-family-base);
+}
+
+.outfit-setup__form {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  min-height: 100%;
+  padding-top: 2.5rem; /* 40 — mo */
+  padding-bottom: 6.25rem; /* 100 — mo */
+  padding-inline: 1.25rem; /* 20 — mo 양옆 */
+  box-sizing: border-box;
+}
+
+.outfit-setup__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  width: 100%;
+  max-width: none;
+  margin-inline: auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.outfit-setup__steps {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.outfit-setup__gauge--pad {
+  display: none;
+}
+
+.outfit-setup__gauge--mo {
+  display: flex;
+  width: 100%;
+}
+
+.outfit-setup__title {
+  margin: 2.5rem 0 0; /* gap 40 from step */
+  color: var(--color-base-900);
+  font-size: 1.5rem; /* 24 */
+  font-weight: var(--font-weight-regular);
+  line-height: 1.35;
+  text-align: center;
+}
+
+/* 캐릭터 미리보기 — 기본 몸 + 옷 레이어 */
+.outfit-setup__preview {
+  position: relative;
+  width: 6.625rem; /* 106 */
+  height: 11.25rem; /* 180 */
+  margin-top: 2.5rem; /* 40 — title↔preview */
+}
+
+.outfit-setup__base {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.outfit-setup__wear {
+  position: absolute;
+  left: 50%;
+  top: 48.3%; /* 몸통(목~하체)에 맞춤 — girl partial 레이어 */
+  z-index: 1;
+  display: block;
+  height: auto;
+  transform: translateX(-50%);
+  pointer-events: none;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* boy 새 옷 — 캐릭터 캔버스와 동일 크기로 전체 덧씌움 */
+.outfit-setup__wear--full {
+  inset: 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transform: none;
+  object-fit: contain;
+  object-position: center top;
+}
+
+.outfit-setup__choices {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.75rem; /* 12 — mo */
+  width: 100%;
+  margin-top: 2.5rem; /* 40 — preview↔choices */
+  padding: 0;
+}
+
+.outfit-setup__choice.selection-box {
+  width: 6.25rem; /* 100 */
+  height: 7.5rem; /* 120 */
+  aspect-ratio: auto;
+  flex-shrink: 0;
+}
+
+.outfit-setup__choice .selection-box__media {
+  overflow: visible;
+}
+
+.outfit-setup__choice .selection-box__media img,
+.outfit-setup__thumb {
+  width: auto;
+  max-width: 5.5rem; /* 88 — selection-box__* 130×148 비율 */
+  height: auto;
+  max-height: 6.25rem; /* 100 */
+  object-fit: contain;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.outfit-setup__footer {
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  padding: 1.25rem 0 0; /* 20 */
+  box-sizing: border-box;
+}
+
+.outfit-setup__footer .btn {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0 !important;
+  max-width: none !important;
+  min-height: 3rem;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .outfit-setup__form {
+    padding-top: 2.5rem; /* 40 */
+    padding-bottom: 2.5rem; /* 40 */
+    padding-inline: 0;
+  }
+
+  .outfit-setup__body {
+    max-width: 56rem;
+    padding: 0 2rem;
+  }
+
+  .outfit-setup__gauge--mo {
+    display: none;
+  }
+
+  .outfit-setup__gauge--pad {
+    display: flex;
+    width: auto;
+  }
+
+  .outfit-setup__title {
+    margin-top: 2.75rem; /* nickname과 동일 */
+    font-size: 1.625rem; /* 26 — nickname과 동일 */
+  }
+
+  .outfit-setup__preview {
+    width: 9.9375rem; /* 159 — pad 스케일 */
+    height: 16.875rem; /* 270 — 180×1.5 */
+    margin-top: 3.75rem; /* 60 */
+  }
+
+  .outfit-setup__choices {
+    gap: 1.5rem; /* 24 — pad/pc */
+    margin-top: 3.75rem; /* 60 */
+  }
+
+  .outfit-setup__choice.selection-box {
+    width: 8.125rem; /* 130 */
+    height: 9.25rem; /* 148 */
+  }
+
+  .outfit-setup__choice .selection-box__media img,
+  .outfit-setup__thumb {
+    max-width: 8.125rem; /* 130 — selection-box__* */
+    max-height: 9.25rem; /* 148 */
+  }
+
+  .outfit-setup__footer {
+    width: 100%;
+    max-width: 36rem; /* 576 */
+    margin-inline: auto;
+    padding: 3.125rem 0 0; /* 50 */
+  }
+
+  .outfit-setup__footer .btn {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important; /* footer(576)에 맞춤 · Push 460 고정 해제 */
+  }
+}

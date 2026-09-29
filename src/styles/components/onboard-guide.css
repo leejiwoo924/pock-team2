@@ -1,0 +1,37 @@
+/**
+ * onboard-guide.css
+ * 홈 온보딩 — 화면은 고정, 설명 위치만 구멍으로 드러남
+ */
+
+.onboard-guide {
+  pointer-events: none;
+}
+
+.onboard-guide__catch {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-index-modal);
+  pointer-events: auto;
+  background: transparent;
+}
+
+/* 타깃 구멍 + 화면 전체를 같은 농도로 덮음 */
+.onboard-guide__spot {
+  position: fixed;
+  z-index: var(--z-index-modal);
+  box-sizing: border-box;
+  pointer-events: none;
+  background: transparent;
+  box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.78);
+}
+
+.onboard-guide__popup {
+  position: fixed;
+  z-index: calc(var(--z-index-modal) + 2);
+  pointer-events: auto;
+}
+
+/* Navigation / green */
+.onboard-popup__next--done {
+  background-color: var(--color-navigation-green);
+}

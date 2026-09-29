@@ -1,0 +1,229 @@
+﻿/**
+ * common.css
+ * 공통 레이아웃과 접근성 유틸리티
+ */
+
+/* 사이트 전역 커서 — 링크·버튼·입력 포함 동일 유지 */
+html,
+html *,
+html *::before,
+html *::after {
+  cursor: var(--cursor-pock) !important;
+}
+
+/* 누르는 동안 열쇠 각도 살짝 회전 */
+html.is-cursor-pressing,
+html.is-cursor-pressing *,
+html.is-cursor-pressing *::before,
+html.is-cursor-pressing *::after {
+  cursor: var(--cursor-pock-press) !important;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: var(--color-background);
+}
+
+/*
+ * 스크롤 시 배경 고정 — 페이지별 배경(.page--*)을 뷰포트 크기 fixed 레이어가 그대로 물려받음.
+ * background-attachment: fixed는 iOS Safari 미지원이라 사용하지 않음.
+ * z-index를 주지 않아(쌓임 맥락 없음) 온보딩 하이라이트·네비 z-index에 영향 없음.
+ */
+.page::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* 모바일 주소창이 접혀도 높이 불변(lvh) — 배경이 늘었다 줄었다 하지 않도록 */
+  height: 100vh;
+  height: 100lvh;
+  background: inherit;
+  pointer-events: none;
+}
+
+/* 고정 배경 레이어 위에 그려지도록 — 기존 position 지정(fixed·absolute 등)이 항상 우선 */
+:where(.page > *) {
+  position: relative;
+}
+
+.page__wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  max-width: var(--layout-max-width);
+  margin-inline: auto;
+}
+
+.page__content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+}
+
+.main {
+  flex: 1;
+  width: 100%;
+  padding: var(--spacing-md) var(--layout-gutter);
+  padding-bottom: calc(var(--spacing-md) + env(safe-area-inset-bottom));
+}
+
+.page--has-navigation .main {
+  padding-bottom: calc(var(--navigation-height) + var(--spacing-md) + env(safe-area-inset-bottom));
+}
+
+.page--modal-open {
+  overflow: hidden;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+:focus-visible {
+  outline: 0.125rem solid var(--color-focus);
+  outline-offset: 0.125rem;
+}
+
+@media (min-width: 769px) {
+  .main {
+    width: min(100%, var(--layout-content-width));
+    margin-inline: auto;
+    padding-block: var(--spacing-lg);
+  }
+}
+
+/* React popup portal layer */
+.popup-layer {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-index-modal, 1000);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-md);
+}
+
+.popup-layer .dimmed-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.popup-layer .pock-popup {
+  position: relative;
+  z-index: 1;
+}
+
+.popup-layer .pock-window {
+  position: relative;
+  z-index: 1;
+}
+
+/* 토스트 — 아래→위 등장 · 위→아래 퇴장 (translateX(-50%) 가운데 정렬 유지) */
+.friend-list-toast,
+.coin-toast,
+.inquiry-toast {
+  animation: toast-slide-in 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.friend-list-toast--leaving,
+.coin-toast--leaving,
+.inquiry-toast--leaving {
+  animation: toast-slide-out 0.3s cubic-bezier(0.64, 0, 0.78, 0) both;
+}
+
+@keyframes toast-slide-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 1.5rem); /* 24 — 임시값 */
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes toast-slide-out {
+  from {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, 1.5rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .friend-list-toast,
+  .coin-toast,
+  .inquiry-toast,
+  .friend-list-toast--leaving,
+  .coin-toast--leaving,
+  .inquiry-toast--leaving {
+    animation-duration: 0.01ms;
+  }
+}
+
+.page-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.page-section__title {
+  margin: 0;
+  font-size: var(--font-size-lg, 1.25rem);
+  line-height: var(--line-height-tight);
+}
+
+.page-section__lead {
+  margin: 0;
+  color: var(--color-base-700, #6e6e6e);
+}
+
+.page-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.page-list__link {
+  display: block;
+  padding: var(--spacing-sm) 0;
+  border-bottom: 1px solid var(--color-border, #ccc);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
